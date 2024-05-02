@@ -31,8 +31,9 @@ def memoria_fim():
     tracemalloc.stop()
     return fim
     
-def memoria_total_consumida(inicio, fim):
-    estatisticas = fim.compare_to(inicio, 'lineno')
+def memoria_total_consumida(inicio,fim):
+    diferenca = fim.compare_to(inicio, 'lineno')
+    estatisticas = diferenca
     tamanho_total_alocado = 0
     tamanho_total_liberado = 0
 
@@ -49,7 +50,6 @@ def memoria_total_consumida(inicio, fim):
     # Calcule a diferença líquida entre o tamanho total alocado e o total liberado
     diferenca_memoria = tamanho_total_alocado - tamanho_total_liberado
     return diferenca_memoria
-
 
 class DesvioPadrao:
     def __init__(self):

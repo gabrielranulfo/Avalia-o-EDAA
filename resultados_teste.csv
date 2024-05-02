@@ -1,0 +1,3 @@
+Arranjo,Tipo de Teste,Tempo (ms),Memória Consumida (bytes),Comparações,Desvio Padrão Comparações
+100000,Pior Cenário,297.5451946258545,4580,300000,0.0
+100000,100 Números Aleatórios,4466.485977172852,3920,5396218,28416.44184354543
