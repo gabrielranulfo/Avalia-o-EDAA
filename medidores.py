@@ -6,14 +6,6 @@ import tracemalloc
 def get_pid():
     pid = os.getpid()
     return pid
-
-def memoria_processo():
-    processo = psutil.Process(get_pid())
-    memoria_utilizada = processo.memory_info().rss
-    return memoria_utilizada
-
-def memoria_total(inicio,fim):
-    return inicio - fim
   
 def medir_tempo():
     return time.time()
