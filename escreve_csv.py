@@ -113,7 +113,7 @@ with open(nome_arquivo_csv, mode='a', newline='', encoding='utf-8') as arquivo_c
         escritor_csv.writerow(["Arranjo", "Tipo de Teste", "Tempo (ms)", "Memória Consumida (bytes)", "Comparações","Desvio Padrão Comparações"])
     
     # Adiciona os dados dos testes
-    escritor_csv.writerow([tamanho_arranjo, "Pior Cenário", tempo_pior, memoria_consumida_pior, comparacoes_1 + comparacoes_2 + comparacoes_3, desvio_padrao_resultado_pior])
+    escritor_csv.writerow([tamanho_arranjo, "Pior Cenário", tempo_pior, memoria_consumida_pior, sum(total_comparacoes_pior), desvio_padrao_resultado_pior])
     escritor_csv.writerow([tamanho_arranjo, "100 Números Aleatórios", tempo_aleatorio, memoria_consumida_aleatorio, total_comparacoes_aleatorio, desvio_padrao_resultado_aleatorio])
 
 print("Novos resultados adicionados com sucesso no arquivo:", nome_arquivo_csv)
