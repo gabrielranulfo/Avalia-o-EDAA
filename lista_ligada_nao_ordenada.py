@@ -18,7 +18,6 @@ for arquivo in arquivos:
     caminho_arquivo = os.path.join(diretorio, arquivo)
 
     pid = get_pid()
-    #nome_arquivo = './arquivos/arranjo_100_mil.txt'
 
     lista = ler_arquivo(caminho_arquivo)
     tamanho_arranjo = len(lista)
@@ -32,21 +31,13 @@ for arquivo in arquivos:
     for x in lista:
         lista_ligada.append(x)
 
-    # Ordena Lista Ligada
-    #lista_ligada.ordenar_lista_ligada()
-
     #ordena vetor chamado lista
     #lista.sort(reverse=False)
-
-    #Escolhe os piores casos para teste
-    #pior_caso1 = -1
-    #pior_caso2 = -50
-    #pior_caso3 = -90
-    #pior_caso3 = lista[-1] #funciona se a lista estiver ordenada
 
     '--------- Pior Cenário ---------'
     desvio = DesvioPadrao()
 
+    #casos_piores = [-1,-50,lista[-1]] #funciona só se a lista for ordenada
     casos_piores = [-1,-50,-90]
     total_comparacoes_pior = []
     tempos_pior = []
@@ -56,7 +47,7 @@ for arquivo in arquivos:
         inicio_tempo_pior = medir_tempo()
         inicio_memoria_pior = memoria_inicio()
 
-        lista_ligada.busca_sequencial_lista_ligada(valor=x)
+        lista_ligada.busca_sequencial_lista_ligada(valor=x,sort=False)
         total_comparacoes_pior.append(lista_ligada.comparacoes_totais)
 
         fim_tempo_pior = medir_tempo()
@@ -92,7 +83,7 @@ for arquivo in arquivos:
         inicio_tempo_aleatorio = medir_tempo()
         inicio_memoria_aleatorio = memoria_inicio()
 
-        lista_ligada.busca_sequencial_lista_ligada(valor=x)
+        lista_ligada.busca_sequencial_lista_ligada(valor=x,sort=False)
         total_comparacoes_aleatorio.append(lista_ligada.comparacoes_totais)
 
         fim_tempo_aleatorio = medir_tempo()

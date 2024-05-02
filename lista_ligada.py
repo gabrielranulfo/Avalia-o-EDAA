@@ -4,6 +4,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.ja_ordenada = False
 
 
 class LinkedList:
@@ -29,7 +30,7 @@ class LinkedList:
         print()
 
     def busca_sequencial_lista_ligada(self, valor, sort=False):
-        if sort:
+        if sort and self.ja_ordenada == False:
             self.ordenar_lista_ligada()
 
         indice = 0
@@ -49,6 +50,7 @@ class LinkedList:
             values.append(current_node.data)
             current_node = current_node.next
         values.sort()
+        self.ja_ordenada = True
 
         # Recriar a lista ligada com os valores ordenados
         self.head = None
