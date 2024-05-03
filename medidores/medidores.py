@@ -43,6 +43,9 @@ def memoria_total_consumida(inicio,fim):
     diferenca_memoria = tamanho_total_alocado - tamanho_total_liberado
     return diferenca_memoria
 
+def esperar(segundos):
+    time.sleep(segundos)
+
 class DesvioPadrao:
     def __init__(self):
         pass
@@ -56,4 +59,6 @@ class DesvioPadrao:
 
     def calcular(self, data):
         return self.variancia(data) ** 0.5
+
+
 

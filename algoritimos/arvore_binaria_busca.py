@@ -7,6 +7,7 @@ class No:
 class ArvoreBinariaBusca:
     def __init__(self):
         self.raiz = None
+        self.comparacoes_totais = 0
 
     def inserir(self, valor):
         if self.raiz is None:
@@ -15,6 +16,7 @@ class ArvoreBinariaBusca:
             self._inserir_recursivamente(self.raiz, valor)
 
     def _inserir_recursivamente(self, no_atual, valor):
+        self.comparacoes_totais += 1  # Incrementando o número de comparações
         if valor < no_atual.valor:
             if no_atual.esquerda is None:
                 no_atual.esquerda = No(valor)
@@ -33,6 +35,7 @@ class ArvoreBinariaBusca:
     def _buscar_recursivamente(self, no_atual, valor):
         if no_atual is None or no_atual.valor == valor:
             return no_atual
+        self.comparacoes_totais += 1  # Incrementando o número de comparações
         if valor < no_atual.valor:
             return self._buscar_recursivamente(no_atual.esquerda, valor)
         return self._buscar_recursivamente(no_atual.direita, valor)
@@ -47,12 +50,3 @@ class ArvoreBinariaBusca:
             self._em_ordem_recursivamente(no_atual.esquerda, elementos)
             elementos.append(no_atual.valor)
             self._em_ordem_recursivamente(no_atual.direita, elementos)
-
-# Exemplo de uso:
-arvore = ArvoreBinariaBusca()
-valores = [8, 3, 10, 1, 6, 14, 4, 7, 13]
-for valor in valores:
-    arvore.inserir(valor)
-
-print("Elementos em ordem crescente:", arvore.em_ordem())
-print("Buscando o valor 6:", arvore.buscar(6))

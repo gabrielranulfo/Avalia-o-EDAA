@@ -1,8 +1,8 @@
 import csv
 import random
 import os
-from lista_ligada import LinkedList
-from medidores import medir_tempo, get_pid, DesvioPadrao,memoria_fim,memoria_inicio,memoria_total_consumida
+from algoritimos.lista_ligada import LinkedList
+from medidores.medidores import medir_tempo, get_pid, DesvioPadrao,memoria_fim,memoria_inicio,memoria_total_consumida
 
 def ler_arquivo(nome_arquivo):
     lista = []
@@ -102,9 +102,14 @@ for arquivo in arquivos:
     tempo_aleatorio = sum(tempos_aleatorio)
     memoria_consumida_aleatorio = sum(memoria_aleatorio)
 
-
     # Salva os resultados em um arquivo CSV
-    nome_arquivo_csv = 'lista_ligada_nao_ordenada.csv'
+    nome_diretorio = './resultados/'
+    if not os.path.exists(nome_diretorio):
+        os.makedirs(nome_diretorio)
+
+    nome_arquivo_csv = os.path.join(nome_diretorio, 'lista_ligada_nao_ordenada.csv')
+
+    #nome_arquivo_csv = '/resultados/lista_ligada_nao_ordenada.csv'
     # Verifica se o arquivo CSV já existe
     arquivo_existe = os.path.isfile(nome_arquivo_csv)
 
