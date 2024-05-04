@@ -1,0 +1,21 @@
+Arranjo,Tipo de Teste,Média Tempo (μs),Desvio Padrão Tempo (μs),Média Comparações,Desvio Padrão Comparações,Média Memória (bytes),Desvio Padrão Memória (bytes)
+100000,Pior Cenário,41,13,16,0,467,411
+100000,100 Números Aleatórios,27,6,16,1,218,147
+1000000,Pior Cenário,63,10,19,0,187,15
+1000000,100 Números Aleatórios,51,26,19,1,217,147
+200000,Pior Cenário,28,12,17,0,187,15
+200000,100 Números Aleatórios,26,3,17,1,217,147
+300000,Pior Cenário,75,55,18,0,187,15
+300000,100 Números Aleatórios,32,19,17,1,217,147
+400000,Pior Cenário,31,12,18,0,187,15
+400000,100 Números Aleatórios,28,3,18,1,219,148
+500000,Pior Cenário,33,11,18,0,187,15
+500000,100 Números Aleatórios,29,6,18,2,217,147
+600000,Pior Cenário,33,14,19,0,187,15
+600000,100 Números Aleatórios,34,12,18,1,217,147
+700000,Pior Cenário,53,17,19,0,187,15
+700000,100 Números Aleatórios,57,15,19,1,217,147
+800000,Pior Cenário,34,17,19,0,187,15
+800000,100 Números Aleatórios,30,5,19,2,217,147
+900000,Pior Cenário,34,11,19,0,187,15
+900000,100 Números Aleatórios,30,5,19,2,220,148
