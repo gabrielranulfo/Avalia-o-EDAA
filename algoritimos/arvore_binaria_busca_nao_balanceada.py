@@ -3,18 +3,27 @@ class No:
         self.valor = valor
         self.esquerda = None
         self.direita = None
-class ArvoreBinariaBusca:
+class ArvoreBinariaBuscaNaoBalanceada:
     def __init__(self):
         self.raiz = None
         self.comparacoes_totais = 0
         self.lista_esquerda = []
-        self.lista_direita =[]
+        self.lista_direita = []
+        #self.busca_recursiva = True
 
-    def inserir(self, valor):
-        if self.raiz is None:
-            self.raiz = No(valor)
+    def inserir(self, valor, insercao_recursiva=True):
+        '''
+        True - Recursiva
+        False - Iterativa
+        '''
+        if insercao_recursiva:
+            if self.raiz is None:
+                self.raiz = No(valor)
+            else:
+                self._inserir_recursivamente(self.raiz, valor)
         else:
-            self._inserir_recursivamente(self.raiz, valor)
+            self.inserir_iterativo(valor)
+
 
     def _inserir_recursivamente(self, no_atual, valor):
         self.comparacoes_totais += 1  # Incrementando o número de comparações
@@ -30,8 +39,38 @@ class ArvoreBinariaBusca:
                 self._inserir_recursivamente(no_atual.direita, valor)
         # Se o valor já existe na árvore, não faz nada
 
-    def buscar(self, valor):
-        return self._buscar_recursivamente(self.raiz, valor)
+    def inserir_iterativo(self, valor):
+        novo_no = No(valor)
+        if self.raiz is None:
+            self.raiz = novo_no
+            return
+        no_atual = self.raiz
+        while True:
+            if valor < no_atual.valor:
+                if no_atual.esquerda is None:
+                    no_atual.esquerda = novo_no
+                    return
+                else:
+                    no_atual = no_atual.esquerda
+            elif valor > no_atual.valor:
+                if no_atual.direita is None:
+                    no_atual.direita = novo_no
+                    return
+                else:
+                    no_atual = no_atual.direita
+            else:
+                # Se o valor já existe na árvore, não faz nada
+                return
+
+    def buscar(self, valor, busca_recursiva=True):
+        '''
+        True - Recursiva
+        False - Iterativa
+        '''
+        if busca_recursiva:
+            return self._buscar_recursivamente(self.raiz, valor)
+        else:
+            return self.busca_iterativa(valor)
 
     def _buscar_recursivamente(self, no_atual, valor):
         if no_atual is None or no_atual.valor == valor:
@@ -40,6 +79,16 @@ class ArvoreBinariaBusca:
         if valor < no_atual.valor:
             return self._buscar_recursivamente(no_atual.esquerda, valor)
         return self._buscar_recursivamente(no_atual.direita, valor)
+    
+    def busca_iterativa(self, valor):
+        no_atual = self.raiz
+        while no_atual is not None and no_atual.valor != valor:
+            self.comparacoes_totais += 1
+            if valor < no_atual.valor:
+                no_atual = no_atual.esquerda
+            else:
+                no_atual = no_atual.direita
+        return no_atual
 
     def em_ordem(self):
         elementos = []

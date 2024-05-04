@@ -10,6 +10,7 @@ def get_pid():
 def medir_tempo():
     #return time.time()
     return time.perf_counter()
+    #return round(time.perf_counter_ns())
 
 def tempo_total(inicio,fim):
     return fim - inicio

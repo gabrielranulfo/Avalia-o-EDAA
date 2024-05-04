@@ -1,7 +1,7 @@
 import csv
 import random
 import os
-from algoritimos.arvore_binaria_busca import ArvoreBinariaBusca
+from algoritimos.arvore_binaria_busca_nao_balanceada import ArvoreBinariaBuscaNaoBalanceada
 from medidores.medidores import medir_tempo, get_pid, DesvioPadrao, memoria_fim, memoria_inicio, memoria_total_consumida,esperar
 
 def ler_arquivo(nome_arquivo):
@@ -24,13 +24,13 @@ for arquivo in arquivos:
     tamanho_arranjo = len(lista)
 
     # Instanciando a árvore binária de busca
-    arvore = ArvoreBinariaBusca()
+    arvore = ArvoreBinariaBuscaNaoBalanceada()
 
     arvore.comparacoes_totais = 0
 
     # Preenche a árvore binária de busca
     for x in lista:
-        arvore.inserir(x)
+        arvore.inserir(x,insercao_recursiva=True)
 
     raiz, esquerda, direita = arvore.ver_lados()
 
@@ -50,7 +50,7 @@ for arquivo in arquivos:
         inicio_tempo_pior = medir_tempo()
         inicio_memoria_pior = memoria_inicio()
 
-        arvore.buscar(x)
+        arvore.buscar(x,busca_recursiva=True)
         total_comparacoes_pior.append(arvore.comparacoes_totais)
         #esperar(0.5)
 
@@ -86,7 +86,7 @@ for arquivo in arquivos:
         inicio_tempo_aleatorio = medir_tempo()
         inicio_memoria_aleatorio = memoria_inicio()
 
-        arvore.buscar(x)
+        arvore.buscar(x,busca_recursiva=True)
         total_comparacoes_aleatorio.append(arvore.comparacoes_totais)
 
         fim_tempo_aleatorio = medir_tempo()
@@ -108,7 +108,7 @@ for arquivo in arquivos:
     if not os.path.exists(nome_diretorio):
         os.makedirs(nome_diretorio)
 
-    nome_arquivo_csv = os.path.join(nome_diretorio, 'arvore_binaria_busca.csv')
+    nome_arquivo_csv = os.path.join(nome_diretorio, 'arvore_binaria_busca_nao_ordenada_nao_balanceada2.csv')
 
     with open(nome_arquivo_csv, mode='a', newline='', encoding='utf-8') as arquivo_csv:
         escritor_csv = csv.writer(arquivo_csv)
