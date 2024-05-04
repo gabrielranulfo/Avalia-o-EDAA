@@ -8,7 +8,8 @@ def get_pid():
     return pid
   
 def medir_tempo():
-    return time.time()
+    #return time.time()
+    return time.perf_counter()
 
 def tempo_total(inicio,fim):
     return fim - inicio

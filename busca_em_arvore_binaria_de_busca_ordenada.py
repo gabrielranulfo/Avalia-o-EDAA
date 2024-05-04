@@ -9,6 +9,7 @@ def ler_arquivo(nome_arquivo):
     with open(nome_arquivo, "r") as arquivo_aberto:
         for number in arquivo_aberto:
             lista.append(int(number.strip()))  # Convertendo para inteiros
+    #lista.sort()
     return lista
 
 diretorio = './arquivos/'
@@ -31,6 +32,12 @@ for arquivo in arquivos:
     for x in lista:
         arvore.inserir(x)
 
+    raiz, esquerda, direita = arvore.ver_lados()
+
+    print("Raiz:", raiz)
+    print("Nós da esquerda:", len(esquerda))
+    print("Nós da direita:", len(direita))
+
     '--------- Pior Cenário ---------'
     desvio = DesvioPadrao()
 
@@ -45,15 +52,17 @@ for arquivo in arquivos:
 
         arvore.buscar(x)
         total_comparacoes_pior.append(arvore.comparacoes_totais)
-        esperar(0.5)
+        #esperar(0.5)
 
         fim_tempo_pior = medir_tempo()
         fim_memoria_pior = memoria_fim()
 
         memoria_pior.append(memoria_total_consumida(inicio=inicio_memoria_pior, fim=fim_memoria_pior))
-        tempos_pior.append((fim_tempo_pior - inicio_tempo_pior) * 1_000_000)
+        #tempos_pior.append((fim_tempo_pior - inicio_tempo_pior) * 1_000_000)
+        tempos_pior.append((fim_tempo_pior - inicio_tempo_pior)* 1e6)
 
-        print(f"Fim : {fim_tempo_pior:.12f} Começo : {inicio_tempo_pior:.12f} Cálculo : {fim_tempo_pior - inicio_tempo_pior:.12f} ")
+        #print(f"Fim : {fim_tempo_pior:.12f} Começo : {inicio_tempo_pior:.12f} Cálculo : {fim_tempo_pior - inicio_tempo_pior:.12f} ")
+        #print(f"Fim : {fim_tempo_pior:.2e} Começo : {inicio_tempo_pior:.2e} Cálculo : {fim_tempo_pior - inicio_tempo_pior:.2e} ")
 
         arvore.comparacoes_totais = 0
     
@@ -84,7 +93,7 @@ for arquivo in arquivos:
         fim_memoria_aleatorio = memoria_fim()
 
         memoria_aleatorio.append(memoria_total_consumida(inicio=inicio_memoria_aleatorio, fim=fim_memoria_aleatorio))
-        tempos_aleatorio.append((fim_tempo_aleatorio - inicio_tempo_aleatorio) * 1_000_000_000)
+        tempos_aleatorio.append((fim_tempo_aleatorio - inicio_tempo_aleatorio)* 1e6)
 
         arvore.comparacoes_totais = 0
 

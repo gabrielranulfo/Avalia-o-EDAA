@@ -3,11 +3,12 @@ class No:
         self.valor = valor
         self.esquerda = None
         self.direita = None
-
 class ArvoreBinariaBusca:
     def __init__(self):
         self.raiz = None
         self.comparacoes_totais = 0
+        self.lista_esquerda = []
+        self.lista_direita =[]
 
     def inserir(self, valor):
         if self.raiz is None:
@@ -50,3 +51,22 @@ class ArvoreBinariaBusca:
             self._em_ordem_recursivamente(no_atual.esquerda, elementos)
             elementos.append(no_atual.valor)
             self._em_ordem_recursivamente(no_atual.direita, elementos)
+
+    def ver_lados(self):
+        raiz = self.raiz.valor if self.raiz else None
+        esquerda = []
+        direita = []
+        
+        if self.raiz:
+            if self.raiz.esquerda:
+                self._adicionar_nos(self.raiz.esquerda, esquerda)
+            if self.raiz.direita:
+                self._adicionar_nos(self.raiz.direita, direita)
+        
+        return raiz, esquerda, direita
+
+    def _adicionar_nos(self, no_atual, lista):
+        if no_atual:
+            lista.append(no_atual.valor)
+            self._adicionar_nos(no_atual.esquerda, lista)
+            self._adicionar_nos(no_atual.direita, lista)
