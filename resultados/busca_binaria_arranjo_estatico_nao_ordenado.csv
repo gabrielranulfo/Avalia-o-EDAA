@@ -1,21 +1,21 @@
 Arranjo,Tipo de Teste,Média Tempo (μs),Desvio Padrão Tempo (μs),Média Comparações,Desvio Padrão Comparações,Média Memória (bytes),Desvio Padrão Memória (bytes)
-100000,Pior Cenário,40,19,16,0,467,411
-100000,100 Números Aleatórios,32,6,17,0,218,147
-1000000,Pior Cenário,65,18,19,0,187,15
-1000000,100 Números Aleatórios,54,11,20,0,217,147
-200000,Pior Cenário,65,23,17,0,187,15
-200000,100 Números Aleatórios,62,100,18,0,217,147
-300000,Pior Cenário,59,25,18,0,187,15
-300000,100 Números Aleatórios,50,11,18,0,217,147
-400000,Pior Cenário,72,41,18,0,187,15
-400000,100 Números Aleatórios,34,5,19,0,219,148
-500000,Pior Cenário,38,15,18,0,187,15
-500000,100 Números Aleatórios,37,9,19,0,217,147
-600000,Pior Cenário,39,15,19,0,187,15
-600000,100 Números Aleatórios,34,4,19,0,217,147
-700000,Pior Cenário,41,18,19,0,187,15
-700000,100 Números Aleatórios,36,10,19,0,217,147
-800000,Pior Cenário,40,16,19,0,187,15
-800000,100 Números Aleatórios,37,6,19,0,217,147
-900000,Pior Cenário,41,14,19,0,187,15
-900000,100 Números Aleatórios,33,4,20,0,220,148
+100000,Pior Cenário,49,19,16,0,467,411
+100000,100 Números Aleatórios,31,4,17,0,218,147
+1000000,Pior Cenário,46,23,19,0,187,15
+1000000,100 Números Aleatórios,35,8,20,0,217,147
+200000,Pior Cenário,40,12,17,0,187,15
+200000,100 Números Aleatórios,43,22,18,0,217,147
+300000,Pior Cenário,93,10,18,0,187,15
+300000,100 Números Aleatórios,40,14,18,0,217,147
+400000,Pior Cenário,38,15,18,0,187,15
+400000,100 Números Aleatórios,37,10,19,0,219,148
+500000,Pior Cenário,38,12,18,0,187,15
+500000,100 Números Aleatórios,34,6,19,0,217,147
+600000,Pior Cenário,39,16,19,0,187,15
+600000,100 Números Aleatórios,35,7,19,0,217,147
+700000,Pior Cenário,43,20,19,0,187,15
+700000,100 Números Aleatórios,35,11,19,0,217,147
+800000,Pior Cenário,37,13,19,0,187,15
+800000,100 Números Aleatórios,35,2,19,0,217,147
+900000,Pior Cenário,42,19,19,0,187,15
+900000,100 Números Aleatórios,37,19,20,0,220,148
