@@ -5,22 +5,26 @@ class Node:
         self.right = None
 
     def insert(self, value):
-        if value < self.key:
-            if self.left is None:
-                self.left = Node(value)
+        current = self
+        while True:
+            if value < current.key:
+                if current.left is None:
+                    current.left = Node(value)
+                    break
+                else:
+                    current = current.left
             else:
-                self.left.insert(value)
-        else:
-            if self.right is None:
-                self.right = Node(value)
-            else:
-                self.right.insert(value)
+                if current.right is None:
+                    current.right = Node(value)
+                    break
+                else:
+                    current = current.right
 
-    def find_deepest_node(self, height=0):
+    def find_deepest_node(self):
         if self is None:
-            return None, height
+            return None, 0
         
-        queue = [(self, height)]
+        queue = [(self, 0)]
         deepest_node = None
         max_height = 0
 
@@ -39,45 +43,51 @@ class Node:
 
         return [deepest_node, max_height]
 
-
     def inorder_traversal(self):
-        if self.left:
-            self.left.inorder_traversal()
-        print(self.key)
-        if self.right:
-            self.right.inorder_traversal()
+        stack = []
+        current = self
+        while True:
+            if current is not None:
+                stack.append(current)
+                current = current.left
+            elif stack:
+                current = stack.pop()
+                print(current.key)
+                current = current.right
+            else:
+                break
 
     def preorder_traversal(self):
-        print(self.key)
-        if self.left:
-            self.left.preorder_traversal()
-        if self.right:
-            self.right.preorder_traversal()
+        stack = [self]
+        while stack:
+            current = stack.pop()
+            print(current.key)
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
 
     def postorder_traversal(self):
-        if self.left:
-            self.left.postorder_traversal()
-        if self.right:
-            self.right.postorder_traversal()
-        print(self.key)
+        stack1 = [self]
+        stack2 = []
+        while stack1:
+            current = stack1.pop()
+            stack2.append(current)
+            if current.left:
+                stack1.append(current.left)
+            if current.right:
+                stack1.append(current.right)
+        while stack2:
+            print(stack2.pop().key)
 
-    def find(self, value, comparison_count):
-        if value < self.key:
-            comparison_count = comparison_count + 1
-            if self.left is None:
-                return [False, comparison_count + 1]
+    def find(self, value, comparison_count=0):
+        current = self
+        while current:
+            comparison_count += 1
+            if value < current.key:
+                current = current.left
+            elif value > current.key:
+                current = current.right
             else:
-                return self.left.find(value, comparison_count + 1)
-        elif value > self.key:
-            comparison_count = comparison_count + 2
-            if self.right is None:
-                return [False, comparison_count + 1]
-            else:
-                return self.right.find(value, comparison_count + 1)
-        else:
-            return [self.key, comparison_count + 2]
-        
-        # Time complexity: Best case O(log N), worst case (n)
-        # auxiliary space: O(1)
-    
-    
+                return current.key, comparison_count
+        return None, comparison_count

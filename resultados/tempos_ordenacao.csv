@@ -1,0 +1,11 @@
+Arranjo,Arquivo,Tempo de Ordenação (μs),Memória (bytes)
+100000,./arquivos/arranjo_100_mil.txt,14316,19824640
+200000,./arquivos/arranjo_200_mil.txt,33483,27893760
+300000,./arquivos/arranjo_300_mil.txt,139639,35991552
+400000,./arquivos/arranjo_400_mil.txt,73259,44134400
+500000,./arquivos/arranjo_500_mil.txt,116211,53690368
+600000,./arquivos/arranjo_600_mil.txt,125418,60469248
+700000,./arquivos/arranjo_700_mil.txt,150001,69611520
+800000,./arquivos/arranjo_800_mil.txt,174107,76521472
+900000,./arquivos/arranjo_900_mil.txt,222831,86028288
+1000000,./arquivos/b-arranjo_1_milhao.txt,359885,93679616

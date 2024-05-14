@@ -8,42 +8,32 @@ def get_pid():
     return pid
   
 def medir_tempo():
-    #return time.time()
     return time.perf_counter()
-    #return round(time.perf_counter_ns())
 
 def tempo_total(inicio,fim):
     return fim - inicio
 
 def memoria_inicio():
-    tracemalloc.start()
-    inicio = tracemalloc.take_snapshot()
+    #esperar(segundos=0.5)
+    process = psutil.Process(get_pid())
+    inicio = process.memory_info().rss
+    #print(process.memory_maps())
+    del process
     return inicio
 
 def memoria_fim():
-    fim = tracemalloc.take_snapshot()
-    tracemalloc.stop()
+    #esperar(segundos=0.5)
+    process = psutil.Process(get_pid())
+    fim = process.memory_info().rss
+    #print(process.memory_maps())
+    del process
     return fim
+
     
 def memoria_total_consumida(inicio,fim):
-    diferenca = fim.compare_to(inicio, 'lineno')
-    estatisticas = diferenca
-    tamanho_total_alocado = 0
-    tamanho_total_liberado = 0
-
-    # Percorra a lista de estatísticas de diferença
-    for estatistica in estatisticas:
-        # Verifique se o tamanho da estatística é positivo ou negativo
-        if estatistica.size > 0:
-            # Se positivo, é uma alocação, então adicione ao tamanho total alocado
-            tamanho_total_alocado += estatistica.size
-        else:
-            # Se negativo, é uma liberação, então adicione ao tamanho total liberado
-            tamanho_total_liberado += abs(estatistica.size)
-
-    # Calcule a diferença líquida entre o tamanho total alocado e o total liberado
-    diferenca_memoria = tamanho_total_alocado - tamanho_total_liberado
-    return diferenca_memoria
+    diferenca = fim - inicio
+    return (inicio + diferenca) #bytes
+    del fim, inicio
 
 def esperar(segundos):
     time.sleep(segundos)
@@ -61,6 +51,3 @@ class DesvioPadrao:
 
     def calcular(self, data):
         return self.variancia(data) ** 0.5
-
-
-
