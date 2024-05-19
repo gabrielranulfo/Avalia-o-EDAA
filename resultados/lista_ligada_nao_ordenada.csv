@@ -1,4 +1,4 @@
-Arranjo,Tipo de Teste,Média Tempo (μs),Desvio Pradrão Tempo (μs),Média Comparações,Desvio Padrão Comparações,Média Memória (bytes),Desvio Padrão Memória (bytes)
+Arranjo,Tipo de Teste,Média Tempo (μs),Desvio Padrão Tempo (μs),Média Comparações,Desvio Padrão Comparações,Média Memória (bytes),Desvio Padrão Memória (bytes)
 100000,100 Números Aleatórios,37974,48789,51814,28090,39739515,22288
 200000,100 Números Aleatórios,23476,14014,98589,60607,62811709,12729
 300000,100 Números Aleatórios,35414,24906,144951,81008,85962752,0

@@ -1,7 +1,6 @@
 import time
 import psutil
 import os
-import tracemalloc
 
 def get_pid():
     pid = os.getpid()
